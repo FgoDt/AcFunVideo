@@ -1,0 +1,1 @@
+MainPackage=C:\Users\li\Documents\Visual Studio 2015\Projects\AcFunVideo\AcFunVideo\bin\ARM\Release\Upload\AcFunVideo_1.1.21.0_ARM.appx

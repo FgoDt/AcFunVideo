@@ -1,0 +1,2 @@
+MainPackage=C:\Users\li\Documents\Visual Studio 2015\Projects\AcFunVideo\AcFunVideo\bin\x86\Release\AcFunVideo_1.1.16.0_x86.appx
+SymbolPackage=C:\Users\li\Documents\Visual Studio 2015\Projects\AcFunVideo\AcFunVideo\AppPackages\AcFunVideo_1.1.16.0_Test\AcFunVideo_1.1.16.0_x86.appxsym

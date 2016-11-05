@@ -1,0 +1,2 @@
+C:\Users\li\Documents\GitHub\SYEngine-master\SYEngine\SYEngine.Universal\SYEngine.Universal.vcxproj;arm
+C:\Users\li\Source\Repos\AcFunVideo\AcFunVideo\AcFunVideo.csproj;arm

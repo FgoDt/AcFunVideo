@@ -1,0 +1,117 @@
+﻿<Page
+    x:Class="AcFunVideo.CategoryPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AcFunVideo"
+    xmlns:ACClass="using:AcFunVideo.Class"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="using:AcFunVideo.View"
+    xmlns:data="using:AcFunVideo.Model"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <CollectionViewSource x:Name="RootCVS" IsSourceGrouped="True"/>
+
+        <DataTemplate x:Key="BannerTemplate">
+            <views:CategoryBanner/>
+        </DataTemplate>
+        <DataTemplate x:Key="IconTemplate">
+            <views:Icon/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="NormalTemplate">
+            <views:NormalView/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="HeaderTemplate">
+            <views:NormalView/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="NormalDetailsTemplate">
+            <views:NormalDetailView/>
+        </DataTemplate>
+
+    </Page.Resources>
+
+    <Grid Background="White">
+
+
+        <ScrollViewer  >
+            <StackPanel>
+                <Grid x:Name="MainMenuBar" Background="#0078d7"  Height="80" VerticalAlignment="Top">
+                    <StackPanel Orientation="Horizontal">
+                        <Image x:Name="MainLogoImgBox" Width="60" Margin="10,10,0,0"  Height="40" VerticalAlignment="Top"
+                               Source="IMGS/acfun logo white@1,5x.png"/>
+                    </StackPanel>
+                    <Button x:Name="MainSearchButton" Foreground="White" Content="" Height="50" Width="50" Style="{StaticResource SearchButtonStyle}" HorizontalAlignment="Right" FontFamily="Segoe MDL2 Assets">
+                    </Button>
+                    <TextBlock x:Name="CateGoryTitleBox" FontSize="20"  VerticalAlignment="Bottom" Foreground="White"
+                               Text="Animation 动画"  HorizontalAlignment="Right" Margin="0,10"/>
+                </Grid>
+
+                <FlipView x:Name="CateFlipView" Height="200">
+                </FlipView>
+
+                <ScrollViewer Height="90"
+                              ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                              ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                              ScrollViewer.HorizontalScrollMode="Enabled">
+                    <StackPanel  x:Name="CategoryStakPanel" Orientation="Horizontal" >
+                    </StackPanel>
+                </ScrollViewer>
+
+
+                <StackPanel x:Name="RecommendStackPanel" Margin="0,10,0,0" Height="28" Orientation="Horizontal">
+                    <Border Background="#0078D7" Margin="10,0,10,0" Height="20" Width="10" />
+                    <TextBlock Text="综合推荐" FontSize="18" />
+                </StackPanel>
+                <ListView x:Name="RecommendListView"
+                          Margin="0,0,-20,0"
+                          IsItemClickEnabled="True"
+                          ItemTemplate="{StaticResource NormalDetailsTemplate}"
+                          ShowsScrollingPlaceholders="False"
+                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                          ContainerContentChanging="RecommendListView_ContainerContentChanging"
+                          VerticalAlignment="Top"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                          ScrollViewer.VerticalScrollMode="Disabled"
+                          SelectionMode="None"
+                          ItemClick="RecommendListView_ItemClick"
+                          >
+                </ListView>
+
+
+                <StackPanel Margin="0,10,0,0" Height="28" Orientation="Horizontal">
+                    <Border Background="#0078D7" Margin="10,0,10,0" Height="20" Width="10" />
+                    <TextBlock Text="热门排行" FontSize="18" />
+                </StackPanel>
+                <ListView x:Name="RankListView"
+                          Margin="0,0,-20,0"
+                          IsItemClickEnabled="True"
+                          ItemTemplate="{StaticResource NormalDetailsTemplate}"
+                          ShowsScrollingPlaceholders="False"
+                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                          ContainerContentChanging="RecommendListView_ContainerContentChanging"
+                          VerticalAlignment="Top"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                          ScrollViewer.VerticalScrollMode="Disabled"
+                          SelectionMode="None"
+                          ItemClick="RecommendListView_ItemClick"
+                          >
+                </ListView>
+
+                <StackPanel Margin="0,10,0,0" Height="28" Orientation="Horizontal">
+                    <Border Background="#0078D7" Margin="10,0,10,0" Height="20" Width="10" />
+                    <TextBlock Text="名人堂" FontSize="18" />
+                </StackPanel>
+
+                <ListView  IsItemClickEnabled="True">
+                </ListView>
+
+            </StackPanel>
+        </ScrollViewer>
+
+
+    </Grid>
+</Page>

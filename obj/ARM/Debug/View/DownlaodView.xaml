@@ -1,0 +1,64 @@
+﻿<UserControl
+    x:Class="AcFunVideo.View.DownlaodView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AcFunVideo.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="100"
+    d:DesignWidth="400">
+
+    <Grid x:ConnectionId='1'  Background="White" x:Name="RootGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Grid Margin="0,5">
+            <Border Background="Black" Opacity="0.5">
+                
+            </Border>
+            <Image x:ConnectionId='6'  x:Name="IMG" Margin="0,10" Source="ms-appx:///IMGS/Partition content@1.5/tech/ad.png">
+            </Image>
+            
+        </Grid>
+        <Grid Grid.Column="1">
+            <StackPanel Margin="10">
+                <TextBlock x:ConnectionId='4' 
+                x:Name="TitleTB"
+                TextWrapping="Wrap"
+                           Text="14【怪异君毁经典】《春光灿烂猪八戒》泉眼篇_Part1_0" 
+                           />
+                <TextBlock x:ConnectionId='5' x:Name="InfoTB" Margin="0,10,0,0" Text="123M"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="2">
+            <Button x:ConnectionId='3' HorizontalAlignment="Center"
+                    x:Name="Play"  Background="{x:Null}">
+                <Image Width="30" Height="30" Source="ms-appx:///IMGS/personal center options@1.5/play@1,5x.png"
+                    />
+            </Button>
+        </Grid>
+
+        <Grid Grid.Column="3">
+            <Button x:ConnectionId='2' HorizontalAlignment="Center" x:Name="Delete"  Background="{x:Null}">
+                <Border BorderThickness="1"
+                        Width="30"
+                        Height="30"
+                        CornerRadius="15" 
+                        BorderBrush="Red">
+                    <TextBlock Text="X" 
+                    HorizontalAlignment="Center"
+                    Foreground="Red"
+                               FontSize="20"/>
+                </Border>
+            </Button>
+        </Grid>
+    </Grid>
+</UserControl>
+

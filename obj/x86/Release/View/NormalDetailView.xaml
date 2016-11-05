@@ -1,0 +1,42 @@
+﻿<UserControl
+    x:Class="AcFunVideo.View.NormalDetailView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AcFunVideo.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Grid x:ConnectionId='1'  Margin="0,0,20,0" x:Name="RootGrid" Width="320">
+        <StackPanel Orientation="Horizontal">
+            <Border Width="100" Height="60" Background="Wheat"/>
+            
+            <local:FDImgBox x:ConnectionId='2' Stretch="UniformToFill" x:Name="CoverBox" Width="100" Height="60" 
+                    Margin="-100,0,0,0"
+                  />
+            <Grid x:ConnectionId='3' Height="60" Margin="10" x:Name="TextGrid">
+                <TextBlock x:ConnectionId='4' x:Name="TitleBlock" Height="40" VerticalAlignment="Top"  Width="200"
+                           FontSize="15" Foreground="#0078d7"
+                            Text="jklsjdflkjasl;kj jl;kasjd ;lkasj你艰苦拉萨啦开始减肥家啊龙卷风 ;l"
+                            TextWrapping="Wrap"/>
+                <TextBlock x:ConnectionId='5' Height="18" x:Name="UPNameBox" Text="UP：kjlkjlkj"
+                           Width="100"
+                           HorizontalAlignment="Left"
+                           FontSize="13"
+                           VerticalAlignment="Bottom"/>
+                <TextBlock x:ConnectionId='6' Height="18" x:Name="ViewsBox" Text="123456"
+                            FontSize="13"
+                           VerticalAlignment="Bottom"
+                           HorizontalAlignment="Right" Margin="0,0,19,0"/>
+                <TextBlock x:ConnectionId='7' x:Name="ViewIcon" Text="" VerticalAlignment="Bottom"
+                           Foreground="#0078d7"
+                           TextAlignment="Center"
+                           Width="18" 
+                           HorizontalAlignment="Right" FontFamily="Segoe MDL2 Assets" />
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>
+

@@ -1,0 +1,26 @@
+﻿<UserControl
+    x:Class="AcFunVideo.View.NormalView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AcFunVideo.View"
+   
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Grid x:ConnectionId='1' x:Name="Layout">
+        <StackPanel>
+            <local:FDImgBox x:ConnectionId='2' VerticalAlignment="Top" Stretch="UniformToFill" x:Name="IMG" Grid.Row="0" Grid.Column="0"/>
+            <StackPanel x:ConnectionId='3' x:Name="sp" VerticalAlignment="Bottom">
+                <TextBlock x:ConnectionId='4' Foreground="Black" FontSize="15" x:Name="TITLE" Height="40" 
+                       TextWrapping="Wrap" Grid.Row="1" Grid.Column="0"
+                       TextAlignment="Justify"
+                       />
+                <TextBlock x:ConnectionId='5' FontSize="12" x:Name="UPNAME" Grid.Row="2" Grid.Column="0" Foreground="#0078D7" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>
+

@@ -1,0 +1,25 @@
+﻿<UserControl
+    x:Class="AcFunVideo.View.CartoonView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AcFunVideo.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Grid >
+        <StackPanel>
+            <Image x:ConnectionId='1' Stretch="Fill" x:Name="Cover" VerticalAlignment="Top" />
+            <StackPanel x:ConnectionId='2' x:Name="sp" >
+                <TextBlock x:ConnectionId='3' Foreground="Black" FontSize="13" x:Name="TITLE"  
+                       TextWrapping="Wrap" Grid.Row="1" Grid.Column="0"
+                       TextAlignment="Justify"
+                       />
+                <TextBlock x:ConnectionId='4' x:Name="UPDATE" FontSize="12"  Grid.Row="2" Grid.Column="0" Foreground="#0078D7" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>
+

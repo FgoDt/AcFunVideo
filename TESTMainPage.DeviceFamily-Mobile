@@ -1,0 +1,373 @@
+﻿<Page
+    x:Class="AcFunVideo.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AcFunVideo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:FDViews="using:AcFunVideo.View"
+    mc:Ignorable="d"  >
+
+    <Page.Transitions>
+        <TransitionCollection>
+            <EntranceThemeTransition></EntranceThemeTransition>
+        </TransitionCollection>
+    </Page.Transitions>
+
+    <Page.Resources>
+        <DataTemplate x:Key="NormalViewTemplate">
+            <FDViews:NormalView></FDViews:NormalView>
+        </DataTemplate>
+        <DataTemplate x:Key="CartoonViewTemplate">
+            <FDViews:CartoonView/>
+        </DataTemplate>
+    </Page.Resources>
+
+
+
+    <Grid x:Name="RootGrid"  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    SizeChanged="RootGrid_SizeChanged"
+           >
+
+        <Grid >
+            <Grid 
+            x:Name="MainGrid"
+               >
+                <StackPanel>
+                    <Grid x:Name="MainMenuBar" Height="50" VerticalAlignment="Top">
+                        <StackPanel Orientation="Horizontal">
+                            <Button  Style="{StaticResource SplitViewTogglePaneButtonStyle}" Tapped="MainMenuButton_Tapped" x:Name="MainMenuButton" Width="62" Height="62" HorizontalAlignment="Left"  >
+                            </Button>
+                            <Image x:Name="MainLogoImgBox" Width="80" Margin="10,0,0,0"  Height="62" Source="IMGS/Home/home_icon__logo.png"/>
+                        </StackPanel>
+                        <Button x:Name="MainSearchButton" Height="50" Width="50" Style="{StaticResource SearchButtonStyle}" HorizontalAlignment="Right">
+                            <Button.Background>
+                                <ImageBrush  Stretch="Fill" ImageSource="IMGS/Home/home_icon__search.png"/>
+                            </Button.Background>
+                        </Button>
+                    </Grid>
+                    <Grid x:Name="MainPvoitTitle" Height="20" Margin="0,25,10,0"  >
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock FontSize="15" x:Name="PvoitTitleMain" Margin="0,0,37,0" Text="首页"/>
+                            <TextBlock FontSize="15" x:Name="PvoitTitleDrama" Margin="0,0,37,0" Text="番剧"/>
+                            <TextBlock FontSize="15" x:Name="PvoitTitlePartition" Text="分区"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+                <Grid Margin="0,114,0,0">
+                    <Pivot x:Name="MainPivot" SelectionChanged="MainPivot_SelectionChanged">
+                        <PivotItem Margin="0,-42,0,0">
+                            <ScrollViewer>
+                                <StackPanel>
+
+                                    <FlipView x:Name="MainFlipView"  Margin="6,0" Height="216" VerticalAlignment="Top">
+
+                                    </FlipView>
+
+                                    <StackPanel x:Name="SectionStackPanel" Margin="0,35,0,0" Orientation="Horizontal" >
+                                        <Grid  Height="73" Width="47"  >
+                                            <Image Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" Source="IMGS/Home/home_icon__new.png" />
+                                            <TextBlock Text="新番" 
+                                            TextAlignment="Center"
+                                                       Width="40" Height="20" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                                        </Grid>
+
+                                        <Grid  Height="73" Width="47"  >
+                                            <Image Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" Source="IMGS/Home/home_icon__rank.png" />
+                                            <TextBlock Text="排行" 
+                                            TextAlignment="Center"
+                                                       Width="40" Height="20" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                                        </Grid>
+                                        <Grid  Height="73" Width="47"  >
+                                            <Image Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" Source="IMGS/Home/home_icon__article.png" />
+                                            <TextBlock Text="文章" 
+                                            TextAlignment="Center"
+                                                       Width="40" Height="20" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                                        </Grid>
+                                        <Grid  Height="73" Width="47"  >
+                                            <Image Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" Source="IMGS/Home/home_icon__hot.png" />
+                                            <TextBlock Text="人气" 
+                                            TextAlignment="Center"
+                                                       Width="40" Height="20" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                                        </Grid>
+                                    </StackPanel>
+
+
+                                    <!--今日banner-->
+                                    <Grid Margin="0,10,0,0" >
+                                        <Image Margin="10" Tapped="TodyImg_Tapped" Name="TodyImg"/>
+                                        <Grid HorizontalAlignment="Left">
+                                            <Border VerticalAlignment="Top" Background="#0078D7" Margin="10,0,10,0" Height="24" Width="80" />
+                                            <TextBlock Text="TODAY" Foreground="White" FontSize="20" Margin="15,0" FontWeight="Bold"/>
+                                        </Grid>
+
+                                    </Grid>
+
+                                    <StackPanel Margin="0,10,0,0" Height="28" Orientation="Horizontal">
+                                        <Border Background="#0078D7" Margin="10,0,10,0" Height="20" Width="10" />
+                                        <TextBlock Text="热门推荐" FontSize="18" />
+                                    </StackPanel>
+
+                                    <GridView 
+                                        x:Name="RecommentView"
+                                        ItemTemplate="{StaticResource NormalViewTemplate}"
+                                        ShowsScrollingPlaceholders="False"
+                                        ContainerContentChanging="NormalView_ContainerContentChanging"
+                                        VerticalAlignment="Top"
+                                        ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                        ScrollViewer.VerticalScrollMode="Disabled"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                        IsItemClickEnabled="True"
+                                        SelectionMode="None">
+                                    </GridView>
+
+
+                                    <Image x:Name="CalendarImg"  Margin="10"   />
+
+                                    <StackPanel Margin="0,10,0,0" Height="28" Orientation="Horizontal">
+                                        <Border Background="#0078D7" Margin="10,0,10,0" Height="20" Width="10" />
+                                        <TextBlock Text="香蕉排行" FontSize="18" />
+                                    </StackPanel>
+
+                                    <GridView   x:Name="BananaRankView"
+                                        ItemTemplate="{StaticResource NormalViewTemplate}"
+                                        ShowsScrollingPlaceholders="False"
+                                                ScrollViewer.VerticalScrollMode="Disabled"
+                                        ContainerContentChanging="NormalView_ContainerContentChanging"
+                                        VerticalAlignment="Top"
+                                        ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                        IsItemClickEnabled="True"
+                                        SelectionMode="None">
+                                    </GridView>
+
+
+
+                                    <StackPanel Margin="0,10,0,0" Height="28" Orientation="Horizontal">
+                                        <Border Background="#0078D7" Margin="10,0,10,0" Height="20" Width="10" />
+                                        <TextBlock Text="番剧" FontSize="18" />
+                                    </StackPanel>
+
+                                    <GridView   x:Name="BangumiRankView"
+                                        ItemTemplate="{StaticResource CartoonViewTemplate  }"
+                                        ShowsScrollingPlaceholders="False"
+                                                ScrollViewer.VerticalScrollMode="Disabled"
+                                        ContainerContentChanging="BangumiRankView_ContainerContentChanging"
+                                        VerticalAlignment="Top"
+                                        ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                        IsItemClickEnabled="True"
+                                        SelectionMode="None">
+                                    </GridView>
+                                    <StackPanel Margin="0,10,0,0" Height="28" Orientation="Horizontal">
+                                        <Border Background="#0078D7" Margin="10,0,10,0" Height="20" Width="10" />
+                                        <TextBlock Text="娱乐" FontSize="18" />
+                                    </StackPanel>
+
+                                    <GridView   x:Name="FunRankView"
+                                        ItemTemplate="{StaticResource NormalViewTemplate}"
+                                        ShowsScrollingPlaceholders="False"
+                                                ScrollViewer.VerticalScrollMode="Disabled"
+                                        ContainerContentChanging="NormalView_ContainerContentChanging"
+                                        VerticalAlignment="Top"
+                                        ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                        IsItemClickEnabled="True"
+                                        SelectionMode="None">
+                                    </GridView>
+
+                                    <StackPanel Margin="0,10,0,0" Height="28" Orientation="Horizontal">
+                                        <Border Background="#0078D7" Margin="10,0,10,0" Height="20" Width="10" />
+                                        <TextBlock Text="动画" FontSize="18" />
+                                    </StackPanel>
+
+                                    <GridView   x:Name="CartoonRankView"
+                                        ItemTemplate="{StaticResource NormalViewTemplate}"
+                                        ShowsScrollingPlaceholders="False"
+                                                ScrollViewer.VerticalScrollMode="Disabled"
+                                        ContainerContentChanging="NormalView_ContainerContentChanging"
+                                        VerticalAlignment="Top"
+                                        ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                        IsItemClickEnabled="True"
+                                        SelectionMode="None">
+                                    </GridView>
+
+                                    <StackPanel Margin="0,10,0,0" Height="28" Orientation="Horizontal">
+                                        <Border Background="#0078D7" Margin="10,0,10,0" Height="20" Width="10" />
+                                        <TextBlock Text="游戏" FontSize="18" />
+                                    </StackPanel>
+
+                                    <GridView   x:Name="GameView"
+                                        ItemTemplate="{StaticResource NormalViewTemplate}"
+                                        ShowsScrollingPlaceholders="False"
+                                                ScrollViewer.VerticalScrollMode="Disabled"
+                                        ContainerContentChanging="NormalView_ContainerContentChanging"
+                                        VerticalAlignment="Top"
+                                        ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                        IsItemClickEnabled="True"
+                                        SelectionMode="None">
+                                    </GridView>
+
+                                    <StackPanel Margin="0,10,0,0" Height="28" Orientation="Horizontal">
+                                        <Border Background="#0078D7" Margin="10,0,10,0" Height="20" Width="10" />
+                                        <TextBlock Text="影视" FontSize="18" />
+                                    </StackPanel>
+
+                                    <GridView   x:Name="VideoView"
+                                        ItemTemplate="{StaticResource NormalViewTemplate}"
+                                        ShowsScrollingPlaceholders="False"
+                                                ScrollViewer.VerticalScrollMode="Disabled"
+                                        ContainerContentChanging="NormalView_ContainerContentChanging"
+                                        VerticalAlignment="Top"
+                                        ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                        IsItemClickEnabled="True"
+                                        SelectionMode="None">
+                                    </GridView>
+
+                                    <StackPanel Margin="0,10,0,0" Height="28" Orientation="Horizontal">
+                                        <Border Background="#0078D7" Margin="10,0,10,0" Height="20" Width="10" />
+                                        <TextBlock Text="音乐" FontSize="18" />
+                                    </StackPanel>
+
+                                    <GridView   x:Name="MusicView"
+                                        ItemTemplate="{StaticResource NormalViewTemplate}"
+                                        ShowsScrollingPlaceholders="False"
+                                                ScrollViewer.VerticalScrollMode="Disabled"
+                                        ContainerContentChanging="NormalView_ContainerContentChanging"
+                                        VerticalAlignment="Top"
+                                        ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                        IsItemClickEnabled="True"
+                                        SelectionMode="None">
+                                    </GridView>
+
+                                    <StackPanel Margin="0,10,0,0" Height="28" Orientation="Horizontal">
+                                        <Border Background="#0078D7" Margin="10,0,10,0" Height="20" Width="10" />
+                                        <TextBlock Text="舞蹈" FontSize="18" />
+                                    </StackPanel>
+
+                                    <GridView   x:Name="DanceView"
+                                        ItemTemplate="{StaticResource NormalViewTemplate}"
+                                        ShowsScrollingPlaceholders="False"
+                                                ScrollViewer.VerticalScrollMode="Disabled"
+                                        ContainerContentChanging="NormalView_ContainerContentChanging"
+                                        VerticalAlignment="Top"
+                                        ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                        IsItemClickEnabled="True"
+                                        SelectionMode="None">
+                                    </GridView>
+
+                                    <StackPanel Margin="0,10,0,0" Height="28" Orientation="Horizontal">
+                                        <Border Background="#0078D7" Margin="10,0,10,0" Height="20" Width="10" />
+                                        <TextBlock Text="科技" FontSize="18" />
+                                    </StackPanel>
+
+                                    <GridView   x:Name="TechView"
+                                        ItemTemplate="{StaticResource NormalViewTemplate}"
+                                        ShowsScrollingPlaceholders="False"
+                                                ScrollViewer.VerticalScrollMode="Disabled"
+                                        ContainerContentChanging="NormalView_ContainerContentChanging"
+                                        VerticalAlignment="Top"
+                                        ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                        IsItemClickEnabled="True"
+                                        SelectionMode="None">
+                                    </GridView>
+
+                                    <StackPanel Margin="0,10,0,0" Height="28" Orientation="Horizontal">
+                                        <Border Background="#0078D7" Margin="10,0,10,0" Height="20" Width="10" />
+                                        <TextBlock Text="体育" FontSize="18" />
+                                    </StackPanel>
+
+                                    <GridView   x:Name="SportView"
+                                        ItemTemplate="{StaticResource NormalViewTemplate}"
+                                        ShowsScrollingPlaceholders="False"
+                                                ScrollViewer.VerticalScrollMode="Disabled"
+                                        ContainerContentChanging="NormalView_ContainerContentChanging"
+                                        VerticalAlignment="Top"
+                                        ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                        IsItemClickEnabled="True"
+                                        SelectionMode="None">
+                                    </GridView>
+
+                                    <StackPanel Margin="0,10,0,0" Height="28" Orientation="Horizontal">
+                                        <Border Background="#0078D7" Margin="10,0,10,0" Height="20" Width="10" />
+                                        <TextBlock Text="彼女" FontSize="18" />
+                                    </StackPanel>
+
+                                    <GridView   x:Name="GirlView"
+                                        ItemTemplate="{StaticResource NormalViewTemplate}"
+                                        ShowsScrollingPlaceholders="False"
+                                                ScrollViewer.VerticalScrollMode="Disabled"
+                                        ContainerContentChanging="NormalView_ContainerContentChanging"
+                                        VerticalAlignment="Top"
+                                        ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                        IsItemClickEnabled="True"
+                                        SelectionMode="None">
+                                    </GridView>
+                                    <StackPanel Margin="0,10,0,0" Height="28" Orientation="Horizontal">
+                                        <Border Background="#0078D7" Margin="10,0,10,0" Height="20" Width="10" />
+                                        <TextBlock Text="鱼塘" FontSize="18" />
+                                    </StackPanel>
+
+                                    <GridView   x:Name="BoyView"
+                                        ItemTemplate="{StaticResource NormalViewTemplate}"
+                                        ShowsScrollingPlaceholders="False"
+                                                ScrollViewer.VerticalScrollMode="Disabled"
+                                        ContainerContentChanging="NormalView_ContainerContentChanging"
+                                        VerticalAlignment="Top"
+                                        ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                        IsItemClickEnabled="True"
+                                        SelectionMode="None">
+                                    </GridView>
+
+                                    <StackPanel Margin="0,10,0,0" Height="28" Orientation="Horizontal">
+                                        <Border Background="#0078D7" Margin="10,0,10,0" Height="20" Width="10" />
+                                        <TextBlock Text="文章" FontSize="18" />
+                                    </StackPanel>
+
+                                    <GridView   x:Name="ArticlView"
+                                        ItemTemplate="{StaticResource NormalViewTemplate}"
+                                        ShowsScrollingPlaceholders="False"
+                                        ContainerContentChanging="NormalView_ContainerContentChanging"
+                                        VerticalAlignment="Top"
+                                        ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                        IsItemClickEnabled="True"
+                                        SelectionMode="None">
+                                    </GridView>
+
+
+
+                                </StackPanel>
+                            </ScrollViewer>
+                        </PivotItem>
+                        <PivotItem Margin="0,-42,0,0">
+                            <Grid Background="Red">
+                                
+                            </Grid>
+                        </PivotItem>
+                    </Pivot>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <SplitView PanePlacement="Right" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" x:Name="MainSplit"  OpenPaneLength="120" x:FieldModifier="Public" IsPaneOpen="False" DisplayMode="Overlay"  >
+            <SplitView.Pane>
+                <Grid>
+                    <TextBlock Text="Pane" />
+                </Grid>
+            </SplitView.Pane>
+        </SplitView>
+
+    </Grid>
+
+
+</Page>

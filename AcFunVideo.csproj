@@ -1,0 +1,479 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{1171F434-138A-47F0-BB7F-11CA6CC85DED}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AcFunVideo</RootNamespace>
+    <AssemblyName>AcFunVideo</AssemblyName>
+    <DefaultLanguage>zh-CN</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>AcFunVideo_StoreKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>arm</AppxBundlePlatforms>
+    <PackageCertificateThumbprint>ACE0AF05C6444FD2FE6AC8D160BE6D4F0E2E5E19</PackageCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="IMGS\acfun logo white%401,5x.png" />
+    <Content Include="IMGS\Detail\back bt.png" />
+    <Content Include="Data\MainPagePartData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\ChannelsData.json" />
+    <None Include="AcFunVideo_StoreKey.pfx" />
+    <None Include="project.json" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CategoryPage.xaml.cs">
+      <DependentUpon>CategoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Class\ACCOLOR.cs" />
+    <Compile Include="Class\ACDataTemplates.cs" />
+    <Compile Include="Class\ACDEBUG.cs" />
+    <Compile Include="Class\AcFunAPI.cs" />
+    <Compile Include="Class\AppConfiguration.cs" />
+    <Compile Include="Class\ChatFunc.cs" />
+    <Compile Include="Class\DownloadFunc.cs" />
+    <Compile Include="Class\LocalStorageFunc.cs" />
+    <Compile Include="Class\SliderValueConverter.cs" />
+    <Compile Include="Class\Utils.cs" />
+    <Compile Include="DownloadPage.xaml.cs">
+      <DependentUpon>DownloadPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ACChannelsData.cs" />
+    <Compile Include="Model\ACComment.cs" />
+    <Compile Include="Model\ACCommentData.cs" />
+    <Compile Include="Model\AcfunVideoData.cs" />
+    <Compile Include="Model\ALLRankData.cs" />
+    <Compile Include="Model\BananaRankData.cs" />
+    <Compile Include="Class\HardWayToGetInfo.cs" />
+    <Compile Include="Class\HttpEngine.cs" />
+    <Compile Include="Class\HttpHelper.cs" />
+    <Compile Include="Class\MainPageFunc.cs" />
+    <Compile Include="Class\Setting.cs" />
+    <Compile Include="Details.xaml.cs">
+      <DependentUpon>Details.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ACArticleData.cs" />
+    <Compile Include="Model\AcContent.cs" />
+    <Compile Include="Model\AXFContent.cs" />
+    <Compile Include="Model\BangumiData.cs" />
+    <Compile Include="Model\BangumiDetailData.cs" />
+    <Compile Include="Model\CategoryPageData.cs" />
+    <Compile Include="Model\DanmuData.cs" />
+    <Compile Include="Model\DetailData.cs" />
+    <Compile Include="Model\DownloadDatas.cs" />
+    <Compile Include="Model\GroupInfoList.cs" />
+    <Compile Include="Model\HomeData.cs" />
+    <Compile Include="Model\MainPageCategoryData.cs" />
+    <Compile Include="Model\NewBangumiData.cs" />
+    <Compile Include="Model\PlayTimeData.cs" />
+    <Compile Include="Model\PlayVideoSourceData.cs" />
+    <Compile Include="Model\SinglePartDatas.cs" />
+    <Compile Include="Model\VideoSourceData.cs" />
+    <Compile Include="PCPage\PCMainPage.xaml.cs">
+      <DependentUpon>PCMainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RankPage.xaml.cs">
+      <DependentUpon>RankPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SinglePartPage.xaml.cs">
+      <DependentUpon>SinglePartPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BannerView.xaml.cs">
+      <DependentUpon>BannerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CartoonSelectionView.xaml.cs">
+      <DependentUpon>CartoonSelectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CartoonView.xaml.cs">
+      <DependentUpon>CartoonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CategoryBanner.xaml.cs">
+      <DependentUpon>CategoryBanner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CategoryIcon.xaml.cs">
+      <DependentUpon>CategoryIcon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CategoryIconButton.xaml.cs">
+      <DependentUpon>CategoryIconButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ACDownloadOperation.cs" />
+    <Compile Include="View\DownlaodView.xaml.cs">
+      <DependentUpon>DownlaodView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\FDImgBox.xaml.cs">
+      <DependentUpon>FDImgBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Icon.xaml.cs">
+      <DependentUpon>Icon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NormalCommentView.xaml.cs">
+      <DependentUpon>NormalCommentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NormalDetailView.xaml.cs">
+      <DependentUpon>NormalDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NormalView.xaml.cs">
+      <DependentUpon>NormalView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RefCommentView.xaml.cs">
+      <DependentUpon>RefCommentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UnderLineButton.xaml.cs">
+      <DependentUpon>UnderLineButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UnderLineSwitchButton.xaml.cs">
+      <DependentUpon>UnderLineSwitchButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\VideoSinglePartView.xaml.cs">
+      <DependentUpon>VideoSinglePartView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="AcFunVideo_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IMGS\Detail\DanmuOff.png" />
+    <Content Include="IMGS\Detail\DanmuON.png" />
+    <Content Include="IMGS\HomePartTop\BLUE article icon.png" />
+    <Content Include="IMGS\HomePartTop\BLUE new animation icon.png" />
+    <Content Include="IMGS\HomePartTop\BLUE pop  icon.png" />
+    <Content Include="IMGS\HomePartTop\BLUE rank icon.png" />
+    <Content Include="IMGS\Home\home_icon_next.png" />
+    <Content Include="IMGS\Home\home_icon__article.png" />
+    <Content Include="IMGS\Home\home_icon__hot.png" />
+    <Content Include="IMGS\Home\home_icon__logo.png" />
+    <Content Include="IMGS\Home\home_icon__menu.png" />
+    <Content Include="IMGS\Home\home_icon__new.png" />
+    <Content Include="IMGS\Home\home_icon__rank.png" />
+    <Content Include="IMGS\Home\home_icon__search.png" />
+    <Content Include="IMGS\Home\home_icon__special.png" />
+    <Content Include="IMGS\logo%401,5x.png" />
+    <Content Include="IMGS\Partition content%401.5\anime\2.5.png" />
+    <Content Include="IMGS\Partition content%401.5\anime\3d.png" />
+    <Content Include="IMGS\Partition content%401.5\anime\china.png" />
+    <Content Include="IMGS\Partition content%401.5\anime\flash.png" />
+    <Content Include="IMGS\Partition content%401.5\anime\mad.png" />
+    <Content Include="IMGS\Partition content%401.5\anime\news.png" />
+    <Content Include="IMGS\Partition content%401.5\anime\newtv.png" />
+    <Content Include="IMGS\Partition content%401.5\anime\oldtv.png" />
+    <Content Include="IMGS\Partition content%401.5\dance\all.png" />
+    <Content Include="IMGS\Partition content%401.5\dance\outaku.png" />
+    <Content Include="IMGS\Partition content%401.5\film\bbc.png" />
+    <Content Include="IMGS\Partition content%401.5\film\chinatv.png" />
+    <Content Include="IMGS\Partition content%401.5\film\jptv.png" />
+    <Content Include="IMGS\Partition content%401.5\film\koreatv.png" />
+    <Content Include="IMGS\Partition content%401.5\film\movie.png" />
+    <Content Include="IMGS\Partition content%401.5\film\nettv.png" />
+    <Content Include="IMGS\Partition content%401.5\film\other.png" />
+    <Content Include="IMGS\Partition content%401.5\film\photograph.png" />
+    <Content Include="IMGS\Partition content%401.5\film\tvfile.png" />
+    <Content Include="IMGS\Partition content%401.5\film\usatv.png" />
+    <Content Include="IMGS\Partition content%401.5\fishpond\focus.png" />
+    <Content Include="IMGS\Partition content%401.5\fishpond\history.png" />
+    <Content Include="IMGS\Partition content%401.5\fishpond\war.png" />
+    <Content Include="IMGS\Partition content%401.5\game\Athletics.png" />
+    <Content Include="IMGS\Partition content%401.5\game\card.png" />
+    <Content Include="IMGS\Partition content%401.5\game\gameCollection.png" />
+    <Content Include="IMGS\Partition content%401.5\game\lol.png" />
+    <Content Include="IMGS\Partition content%401.5\game\Mugen.png" />
+    <Content Include="IMGS\Partition content%401.5\game\xbox.png" />
+    <Content Include="IMGS\Partition content%401.5\joy\Demon.png" />
+    <Content Include="IMGS\Partition content%401.5\joy\foods.png" />
+    <Content Include="IMGS\Partition content%401.5\joy\life.png" />
+    <Content Include="IMGS\Partition content%401.5\joy\pets.png" />
+    <Content Include="IMGS\Partition content%401.5\joy\shows.png" />
+    <Content Include="IMGS\Partition content%401.5\music\general.png" />
+    <Content Include="IMGS\Partition content%401.5\music\jpop.png" />
+    <Content Include="IMGS\Partition content%401.5\music\Live.png" />
+    <Content Include="IMGS\Partition content%401.5\music\Original.png" />
+    <Content Include="IMGS\Partition content%401.5\music\play.png" />
+    <Content Include="IMGS\Partition content%401.5\music\Vocaloid.png" />
+    <Content Include="IMGS\Partition content%401.5\sgirl\cp.png" />
+    <Content Include="IMGS\Partition content%401.5\sgirl\else.png" />
+    <Content Include="IMGS\Partition content%401.5\sgirl\idol.png" />
+    <Content Include="IMGS\Partition content%401.5\sgirl\model.png" />
+    <Content Include="IMGS\Partition content%401.5\sport\11area.png" />
+    <Content Include="IMGS\Partition content%401.5\sport\allsports.png" />
+    <Content Include="IMGS\Partition content%401.5\sport\amazing.png" />
+    <Content Include="IMGS\Partition content%401.5\sport\basketball.png" />
+    <Content Include="IMGS\Partition content%401.5\sport\boxing.png" />
+    <Content Include="IMGS\Partition content%401.5\sport\football.png" />
+    <Content Include="IMGS\Partition content%401.5\tech\ad.png" />
+    <Content Include="IMGS\Partition content%401.5\tech\black tech.png" />
+    <Content Include="IMGS\Partition content%401.5\tech\car.png" />
+    <Content Include="IMGS\Partition content%401.5\tech\Electronics.png" />
+    <Content Include="IMGS\Partition content%401.5\tech\self power.png" />
+    <Content Include="IMGS\Partition content%401.5\tech\sf.png" />
+    <Content Include="IMGS\Partition content%401.5\tech\tech.png" />
+    <Content Include="IMGS\Partition content%401.5\tech\white tech.png" />
+    <Content Include="IMGS\personal center options%401.5\logo%401,5x.png" />
+    <Content Include="IMGS\personal center options%401.5\play%401,5x.png" />
+    <Content Include="IMGS\personal center options%401.5\delete%401,5x.png" />
+    <Content Include="IMGS\Zone\cartoon_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="IMGS\Zone\dance icon.png" />
+    <Content Include="IMGS\Zone\fish icon.png" />
+    <Content Include="IMGS\Zone\fun icon.png" />
+    <Content Include="IMGS\Zone\game icon.png" />
+    <Content Include="IMGS\Zone\girl icon.png" />
+    <Content Include="IMGS\Zone\more icon.png" />
+    <Content Include="IMGS\Zone\music icon.png" />
+    <Content Include="IMGS\Zone\pe icon.png" />
+    <Content Include="IMGS\Zone\tech icon.png" />
+    <Content Include="IMGS\Zone\TV icon.png" />
+    <Content Include="IMGS\Zone\union icon.png" />
+    <Content Include="IMGS\Zone\zone_icon__03.png" />
+    <Content Include="IMGS\Zone\zone_icon__05.png" />
+    <Content Include="IMGS\Zone\zone_icon__07.png" />
+    <Content Include="IMGS\Zone\zone_icon__09.png" />
+    <Content Include="IMGS\Zone\zone_icon__16.png" />
+    <Content Include="IMGS\Zone\zone_icon__19.png" />
+    <Content Include="IMGS\Zone\zone_icon__22.png" />
+    <Content Include="IMGS\Zone\zone_icon__25.png" />
+    <Content Include="IMGS\Zone\zone_icon__31.png" />
+    <Content Include="IMGS\Zone\zone_icon__33.png" />
+    <Content Include="IMGS\Zone\zone_icon__35.png" />
+    <Content Include="IMGS\Zone\zone_icon__37.png" />
+    <Content Include="IMGS\Zone\zone_icon__43.png" />
+    <Content Include="IMGS\Zone\zone_icon__44.png" />
+    <Content Include="IMGS\Zone\zone_icon__46.png" />
+    <Content Include="IMGS\Zone\zone_icon__48.png" />
+    <None Include="Package.StoreAssociation.xml" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="AboutPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CategoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Details.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <None Include="TESTMainPage.DeviceFamily-Mobile">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <Page Include="DownloadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PCPage\PCMainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RankPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SinglePartPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\BannerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CartoonSelectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CartoonView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CategoryBanner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CategoryIcon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CategoryIconButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DownlaodView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\FDImgBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Icon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NormalCommentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NormalDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NormalView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RefCommentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UnderLineButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UnderLineSwitchButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\VideoSinglePartView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MobiPage\" />
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="Microsoft.VCLibs, version=14.0">
+      <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
+    </SDKReference>
+    <SDKReference Include="ShanYe MediaPlayer Engine %28Windows 10 UWP%29, Version=1.0.7.1">
+      <Name>ShanYe MediaPlayer Engine %28Windows 10 UWP%29</Name>
+    </SDKReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

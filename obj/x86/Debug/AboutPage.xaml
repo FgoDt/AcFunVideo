@@ -1,0 +1,56 @@
+﻿<Page
+    x:Class="AcFunVideo.AboutPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AcFunVideo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid Background="#0078d7" Height="60"  VerticalAlignment="Top">
+            <TextBlock x:ConnectionId='1' x:Name="TitleBolock" Text="关于" FontSize="20"
+                       Foreground="White" VerticalAlignment="Bottom"
+                       Margin="10,10"/>
+        </Grid>
+        <ScrollViewer>
+            <StackPanel Margin="0,60,0,0">
+                <TextBlock Margin="0,10,0,0" Foreground="Red" Text="你被带到了这个页面是因为我没有完成你想要得到的页面,所以别担心这样你没事！！"
+                 TextAlignment="Center"
+                           TextWrapping="Wrap" />
+                <Image VerticalAlignment="Top" Width="100" Margin="0,0,0,0" Source="IMGS/logo@1,5x.png">
+                </Image>
+                <RichTextBlock VerticalAlignment="Top"
+                       Margin="80,30,80,0">
+                    <Paragraph>
+                        <Run Foreground="Black">
+                            <Run.Text>软件版本：</Run.Text>
+                        </Run>
+                        <Run Foreground="#0078d7">xx.xx.xx</Run>
+                        <LineBreak/>
+                        <LineBreak/>
+                        <Run Foreground="Black">CAST</Run>
+                        <LineBreak/>
+                        <Run Foreground="#0078d7">程序开发：FgoDt</Run>
+                        <LineBreak/>
+                        <Run Foreground="#0078d7">绯色の空（技术支持）</Run>
+                        <LineBreak/>
+                        <Run Foreground="#0078d7">界面设计：Say</Run>
+                        <LineBreak/>
+                        <LineBreak/>
+                        <Run Foreground="Black" >感谢</Run>
+                        <LineBreak/>
+                        <Run Foreground="Black">feedback反馈群全体成员</Run>
+                        <LineBreak/>
+                        <LineBreak/>
+                        <Run Foreground="Black">如你所见这是一个未完成的软件，如果不是8.1版本失效你不应该看到这个版本！所以其中的bug很多见谅！！！</Run>
+                        <InlineUIContainer>
+                            <HyperlinkButton Content="CODE:git@gitlab.com:fgodt/AcFunVideo.git"/>
+                        </InlineUIContainer>
+                    </Paragraph>
+                </RichTextBlock>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
+

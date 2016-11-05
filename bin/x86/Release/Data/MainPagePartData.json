@@ -1,0 +1,76 @@
+﻿{
+  "part": [
+    {
+      "img": "IMGS/Zone/girl icon.png",
+      "title": "彼♀女",
+      "borderColor": "red",
+      "backColor": ""
+    },
+    {
+      "img": "IMGS/Zone/fish icon.png",
+      "title": "鱼♂塘",
+      "borderColor": "blu",
+      "backColor": ""
+    },
+    {
+      "img": "IMGS/Zone/union icon.png",
+      "title": "下载",
+      "borderColor": "",
+      "backColor": "deepBlu"
+    },
+    {
+      "img": "IMGS/Zone/more icon.png",
+      "title": "更多",
+      "borderColor": "",
+      "backColor": "deepBlu"
+    },
+    {
+      "img": "IMGS/Zone/cartoon_icon.png",
+      "title": "动画",
+      "borderColor": "",
+      "backColor": "orange"
+    },
+    {
+      "img": "IMGS/Zone/music icon.png",
+      "title": "音乐",
+      "borderColor": "",
+      "backColor": "green"
+    },
+    {
+      "img": "IMGS/Zone/dance icon.png",
+      "title": "舞蹈",
+      "borderColor": "",
+      "backColor": "red"
+    },
+    {
+      "img": "IMGS/Zone/game icon.png",
+      "title": "游戏",
+      "borderColor": "",
+      "backColor": "yellow"
+    },
+    {
+      "img": "IMGS/Zone/fun icon.png",
+      "title": "娱乐",
+      "borderColor": "",
+      "backColor": "red"
+    },
+    {
+      "img": "IMGS/Zone/tech icon.png",
+      "title": "科技",
+      "borderColor": "",
+      "backColor": "blu"
+    },
+    {
+      "img": "IMGS/Zone/TV icon.png",
+      "title": "影视",
+      "borderColor": "",
+      "backColor": "orange"
+    },
+    {
+      "img": "IMGS/Zone/pe icon.png",
+      "title": "体育",
+      "borderColor": "",
+      "backColor": "green"
+    }
+  ]
+}
