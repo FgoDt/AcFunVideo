@@ -241,7 +241,7 @@ namespace AcFunVideo
 
         private async void AddMainPageNormalView()
         {
-            AddView(RecommentView, "热门推荐");
+            AddView(RecommentView, "猴山头条");
             AddView(FunRankView, "娱乐");
             AddView(GameView, "游戏");
             AddView(CartoonRankView, "动画");
@@ -268,14 +268,22 @@ namespace AcFunVideo
                 return;
             }
             var ax = await GetSingleDicData(key);
-            gv.ItemsSource = ax.Contents;
+            if (ax!=null)
+            {
+                gv.ItemsSource = ax.Contents;
+            }
+           
         }
 
         private async Task<AXFContent> GetSingleDicData(string key)
         {
             HomeData hd = new HomeData();
-           _dic[key] =  await hd.GetSingleData((_dic[key].Id), key);
-            return _dic[key];
+            if (_dic.ContainsKey(key))
+            {
+                _dic[key] = await hd.GetSingleData((_dic[key].Id), key);
+                return _dic[key];
+            }
+            return null;
         }
 
        

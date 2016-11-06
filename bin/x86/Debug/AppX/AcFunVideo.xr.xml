@@ -196,6 +196,7 @@
       <RootProperty Name="Height" />
       <RootProperty Name="Margin" />
       <RootProperty Name="VerticalAlignment" />
+      <RootEvent Name="Loaded" />
       <RootEvent Name="SelectionChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ListView">
@@ -209,6 +210,7 @@
       <RootProperty Name="BorderBrush" />
       <RootEvent Name="ContainerContentChanging" />
       <RootEvent Name="ItemClick" />
+      <RootEvent Name="Loaded" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Border">
       <RootProperty Name="Background" />
@@ -324,11 +326,8 @@
     <RootType FullName="AcFunVideo.View.DownlaodView" />
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.BindExtension" />
     <RootType FullName="AcFunVideo.View.FDImgBox">
-      <RootProperty Name="Stretch" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="Height" />
-      <RootProperty Name="Margin" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Stretch" />
     </RootType>
     <RootType FullName="AcFunVideo.View.NormalCommentView" />
     <RootType FullName="Windows.UI.Xaml.Media.LinearGradientBrush">

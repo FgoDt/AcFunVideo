@@ -21,7 +21,7 @@ namespace AcFunVideo.View
 {
     public sealed partial class NormalDetailView : UserControl
     {
-        public FDImgBox coverBox;
+        public Image coverBox;
         public Grid rootGrid;
         public TextBlock titleBox;
         public TextBlock upBox;
@@ -53,7 +53,10 @@ namespace AcFunVideo.View
             }
             else
             {
-                this.viewsBox.Text = content.Visit.Views;
+                if (content.Visit.Views!=null)
+                {
+                    this.viewsBox.Text = content.Visit.Views;
+                }
             }
             if (content.User!=null)
             {
@@ -63,7 +66,7 @@ namespace AcFunVideo.View
             {
                 UPNameBox.Text = "UP：你猜是谁";
             }
-            coverBox.UriSource = new Uri(content.Cover);
+            coverBox.Source = new BitmapImage( new Uri(content.Cover));
             titleBox.Text = content.Title;
 
         }

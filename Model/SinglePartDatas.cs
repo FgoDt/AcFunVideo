@@ -25,11 +25,12 @@ namespace AcFunVideo.Model
                     ac.Cover = data["coverImage"].ToString();
                     ac.Visit = new ACVisit();
                     ac.Visit.Views = data["viewCount"].ToString();
-                    if (base.ListOfACContent==null)
-                    {
-                        base.ListOfACContent = new List<AcContent>();
-                    }
-                    base.ListOfACContent.Add(ac);
+                    //if (base.ListOfACContent==null)
+                    //{
+                    //    base.ListOfACContent = new List<AcContent>();
+                    //}
+                    //base.ListOfACContent.Add(ac);
+                    base.CollectionOfACContent.Add(ac);
                 }
             }
             catch (Exception ex)

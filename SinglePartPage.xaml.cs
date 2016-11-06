@@ -1,8 +1,10 @@
-﻿using System;
+﻿using AcFunVideo.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -30,9 +32,10 @@ namespace AcFunVideo
         Model.SinglePartDatas _singlePartDatas;
         public SinglePartPage()
         {
-            this.NavigationCacheMode = NavigationCacheMode.Required;
+            this.NavigationCacheMode = NavigationCacheMode.Enabled;
             this.InitializeComponent();
             AddSwitchButton();
+
         }
         private void AddSwitchButton()
         {
@@ -97,6 +100,7 @@ namespace AcFunVideo
             {
                 _channelid = ac.ContentId;
                 GetInitData();
+                TitleBolock.Text = ac.Title;
             }
         }
 
@@ -114,6 +118,7 @@ namespace AcFunVideo
 
         private async void GetData()
         {
+            RootListView.ItemsSource = null;
              var url = Class.AcFunAPI.GetSinglePartDataUrl(_sort, _page, _channelid, _stimer.ToString(), _etimer.ToString());
             //if (_singlePartDatas!=null)
             //{
@@ -121,8 +126,7 @@ namespace AcFunVideo
             //}
             _singlePartDatas = new Model.SinglePartDatas();
             await _singlePartDatas.GetData(url);
-            RootListView.ItemsSource = null;
-            RootListView.ItemsSource = _singlePartDatas.ListOfACContent;
+            RootListView.ItemsSource = _singlePartDatas.CollectionOfACContent;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -146,10 +150,40 @@ namespace AcFunVideo
         {
             var item = args.Item as Model.AcContent;
             var view = args.ItemContainer.ContentTemplateRoot as View.NormalDetailView;
+            view.Width = RootListView.Width ;
+            view.rootGrid.Width = view.Width - 20;
             if (item != null && view != null)
             {
                 view.AddData(item);
             }
+
+            Model.AcContent last;
+            if (_singlePartDatas.CollectionOfACContent.Count>4)
+            {
+                last = _singlePartDatas.CollectionOfACContent[_singlePartDatas.CollectionOfACContent.Count - 4] as AcContent;
+            }
+            else
+            {
+                if (_singlePartDatas.CollectionOfACContent.Count>0)
+                {
+                    last = _singlePartDatas.CollectionOfACContent[_singlePartDatas.CollectionOfACContent.Count - 1] as AcContent;
+                }
+                else
+                last = null;
+            }
+
+            if (last!=null&& item.ContentId==last.ContentId)
+            {
+                AddMore();
+            }
+
+        }
+
+        private async Task  AddMore()
+        {
+            _page++;
+            var url = Class.AcFunAPI.GetSinglePartDataUrl(_sort, _page, _channelid, _stimer.ToString(), _etimer.ToString());
+            await _singlePartDatas.GetData(url);
         }
 
         private void RootListView_ItemClick(object sender, ItemClickEventArgs e)
@@ -185,6 +219,11 @@ namespace AcFunVideo
             }
             else
                 this.TimeStackPanel.Visibility = Visibility.Collapsed;
+        }
+
+        private void RootListView_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.RootListView.Width = Window.Current.Bounds.Width;
         }
     }
 }

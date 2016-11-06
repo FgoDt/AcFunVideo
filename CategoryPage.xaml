@@ -50,7 +50,8 @@
                                Text="Animation 动画"  HorizontalAlignment="Right" Margin="0,10"/>
                 </Grid>
 
-                <FlipView x:Name="CateFlipView" Height="200">
+                <FlipView  x:Name="CateFlipView" Height="150" Loaded="CateFlipView_Loaded"
+                          >
                 </FlipView>
 
                 <ScrollViewer Height="90"

@@ -7,17 +7,20 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     d:DesignHeight="300"
-    d:DesignWidth="400">
+    d:DesignWidth="400"> 
 
     <Grid x:Name="RootGrid" Background="White">
-        <StackPanel>
-            <Image x:Name="Cover" Source="http://img.ithome.com/newsuploadfiles/2015/11/20151103_122123_303.png" >
+            <Image x:Name="Cover"  
+            Margin="0,0,0,35"
+                   Source="http://img.ithome.com/newsuploadfiles/2015/11/20151103_122123_303.png" >
+                   
             </Image>
-            <TextBlock  Text="" FontSize="35" Margin="10,0"
+            <TextBlock Height="34" VerticalAlignment="Bottom" Text="" FontSize="35" Margin="10,0"
                            Foreground="#0078d7"
                            FontFamily="Segoe MDL2 Assets"></TextBlock>
-            <TextBlock x:Name="Title" Text="魔术" Margin="55,-30,50,0" />
-            <TextBlock Text="//" HorizontalAlignment="Right" Margin="0,-30,20,0" />
-        </StackPanel>
+            <TextBlock x:Name="Title"
+                       Text="魔术" 
+                       VerticalAlignment="Bottom"
+                       Margin="55,0,50,7" />
     </Grid>
 </UserControl>

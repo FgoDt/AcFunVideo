@@ -18,6 +18,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
        
                 <ListView ContainerContentChanging="RootListView_ContainerContentChanging"
+                 Loaded="RootListView_Loaded"
                   ItemTemplate="{StaticResource NormalDetailsView}"
                   ItemClick="RootListView_ItemClick"
                   IsItemClickEnabled="True"

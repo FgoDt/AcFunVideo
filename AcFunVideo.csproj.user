@@ -19,7 +19,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <AppxPackageIsForStore>True</AppxPackageIsForStore>
-    <AppxShowAllApps>False</AppxShowAllApps>
+    <AppxShowAllApps>True</AppxShowAllApps>
     <AppxBuildConfigurationSelection>arm</AppxBuildConfigurationSelection>
     <RemoteMachine0>192.168.1，107</RemoteMachine0>
     <UseAuthentication0>True</UseAuthentication0>

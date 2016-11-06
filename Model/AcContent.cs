@@ -209,6 +209,15 @@ namespace AcFunVideo.Model
         }
     }
 
-  
+
+    public class ACCollection : System.Collections.ObjectModel.ObservableCollection<object>
+    {
+        public ACCollection()
+            : base()
+        {
+
+        }
+    }
+
 
 }

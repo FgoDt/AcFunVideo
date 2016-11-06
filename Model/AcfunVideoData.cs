@@ -14,6 +14,7 @@ namespace AcFunVideo.Model
     {
         public bool isVideoData = false;
         public List<AcContent> ListOfACContent { get; set; }
+        public ACCollection CollectionOfACContent = new ACCollection();
         public Dictionary<string, VideosSource> ListofVideoSourceData { get; set; }
         public virtual async Task<List<AcContent>> GetData(string url)
         {

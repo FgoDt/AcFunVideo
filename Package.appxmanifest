@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="30510FgoDt.AcFunVideo" Publisher="CN=0F77FC4C-E992-4A0C-9550-7588023CD6DB" Version="1.1.22.0" />
+  <Identity Name="30510FgoDt.AcFunVideo" Publisher="CN=0F77FC4C-E992-4A0C-9550-7588023CD6DB" Version="1.1.31.0" />
   <mp:PhoneIdentity PhoneProductId="6e281b3d-6e03-4e71-bb0c-5fea83f2d560" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>AcFunVideo</DisplayName>
-    <PublisherDisplayName>FgoDt</PublisherDisplayName>
+    <PublisherDisplayName>30510FgoDt</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
@@ -16,6 +16,9 @@
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="AcFunVideo.App">
       <Extensions>
+        <uap:Extension Category="windows.protocol">
+          <uap:Protocol Name="ponto" DesiredView="default" />
+        </uap:Extension>
         <uap:Extension Category="windows.fileTypeAssociation">
           <uap:FileTypeAssociation Name=".ponto" DesiredView="default">
             <uap:SupportedFileTypes>
@@ -23,9 +26,6 @@
               <uap:FileType>.flv</uap:FileType>
             </uap:SupportedFileTypes>
           </uap:FileTypeAssociation>
-        </uap:Extension>
-        <uap:Extension Category="windows.protocol">
-          <uap:Protocol Name="ponto" DesiredView="default" />
         </uap:Extension>
       </Extensions>
       <uap:VisualElements DisplayName="AcFunVideo" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="AcFunVideo" BackgroundColor="transparent">

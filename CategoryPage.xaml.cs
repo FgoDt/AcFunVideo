@@ -35,6 +35,18 @@ namespace AcFunVideo
         {
             this.NavigationCacheMode = NavigationCacheMode.Required;
             this.InitializeComponent();
+            Window.Current.SizeChanged += Current_SizeChanged;
+        }
+
+        private void Current_SizeChanged(object sender, WindowSizeChangedEventArgs e)
+        {
+            SetFlipHeight(e.Size);
+        }
+
+        private void SetFlipHeight(Size Size)
+        {
+            this.CateFlipView.Width = Size.Width;
+            CateFlipView.Height = 9 * Size.Width / 34 + 33;//33 is bottom text height
         }
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
@@ -43,6 +55,7 @@ namespace AcFunVideo
             if (_channelContent != Content)
             {
                 _channelContent = Content;
+                CateGoryTitleBox.Text = _channelContent.Title;
                 TestFunc();
             }
             //InitFunc();
@@ -69,21 +82,29 @@ namespace AcFunVideo
             }
         }
 
+        #region 添加banner
         private void AddBanner()
         {
-            List<CategoryBanner> list = new List<CategoryBanner>();
-            foreach (var item in _categoryPageData.dicOfData.ToList()[0].Value.ACContetns)
+        List<CategoryBanner> _Bannerlist = new List<CategoryBanner>();
+            var temps = _categoryPageData.dicOfData.ToList();
+            foreach (var items in temps)
             {
-                var cb = new View.CategoryBanner();
-                cb.Tapped += Cb_Tapped;
-                cb.cover.Source = new BitmapImage(new Uri(item.Cover));
-                cb.title.Text ="GTM的数据没title写数据的吃屎了么";
-                cb.items = item;
-                list.Add(cb);
+                if (items.Value.Type=="banners")
+                {
+                    foreach (var item in items.Value.ACContetns)
+                    {
+                        var cb = new View.CategoryBanner();
+                        cb.Tapped += Cb_Tapped;
+                        cb.cover.Source = new BitmapImage(new Uri(item.Cover));
+                        cb.title.Text = "--ACFUNVIDEO--";
+                        cb.items = item;
+                        _Bannerlist.Add(cb);
+                    }
+                }
+            
             }
-            this.CateFlipView.ItemsSource = list;
+            this.CateFlipView.ItemsSource = _Bannerlist;
         }
-
         private void Cb_Tapped(object sender, TappedRoutedEventArgs e)
         {
             var cb = sender as CategoryBanner;
@@ -94,12 +115,13 @@ namespace AcFunVideo
 
             this.Frame.Navigate(typeof(DetailsPage), cb.items);
         }
+        #endregion
 
-        //分区图标添加
+        #region 添加分区图标
         private void AddCategoryButton()
         {
             this.CategoryStakPanel.Children.Clear();
-            foreach (var item in _categoryPageData.dicOfData.ToList()[1].Value.ACContetns)
+            foreach (var item in _categoryPageData.dicOfData.ToList()[0].Value.ACContetns)
             {
                 Icon icon = new Icon();
                 icon.img.Source = new BitmapImage(new Uri( item.Cover));
@@ -128,6 +150,9 @@ namespace AcFunVideo
                 this.Frame.Navigate(typeof(SinglePartPage), icon.itemSource);
             }
         }
+        #endregion
+
+
 
         private void AddRecommendData()
         {
@@ -138,19 +163,18 @@ namespace AcFunVideo
             }
             RecommendListView.Visibility = RecommendStackPanel.Visibility = Visibility.Visible;
             var items = _categoryPageData.dicOfData.ToList();
-            if (items[3].Value.Type!="videos")
+            if (items[2].Value.Type!="videos")
             {
                 RecommendListView.Visibility = RecommendStackPanel.Visibility = Visibility.Collapsed;
                 return;
             }
-            RecommendListView.ItemsSource = items[3].Value.ACContetns;
+            RecommendListView.ItemsSource = items[2].Value.ACContetns;
         }
         private void AddRankData()
         {
             var items = _categoryPageData.dicOfData.ToList();
-            RankListView.ItemsSource = items[2].Value.ACContetns;
+            RankListView.ItemsSource = items[1].Value.ACContetns;
         }
-
 
         private List<GroupInfoList<object>> DataCategory()
         {
@@ -218,6 +242,12 @@ namespace AcFunVideo
             {
                 this.Frame.Navigate(typeof(DetailsPage), ac);
             }
+        }
+
+        private void CateFlipView_Loaded(object sender, RoutedEventArgs e)
+        {
+            var size = Window.Current.Bounds;
+            SetFlipHeight(new Size(size.Width,size.Height));
         }
     }
 }

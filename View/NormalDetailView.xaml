@@ -13,7 +13,7 @@
         <StackPanel Orientation="Horizontal">
             <Border Width="100" Height="60" Background="Wheat"/>
             
-            <local:FDImgBox Stretch="UniformToFill" x:Name="CoverBox" Width="100" Height="60" 
+            <Image Stretch="UniformToFill" x:Name="CoverBox" Width="100" Height="60" 
                     Margin="-100,0,0,0"
                   />
             <Grid Height="60" Margin="10" x:Name="TextGrid">
