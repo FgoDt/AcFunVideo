@@ -7,7 +7,9 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Networking.PushNotifications;
 using Windows.Security.ExchangeActiveSyncProvisioning;
+using Windows.UI.Notifications;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -15,6 +17,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using AcFunVideo.Utilites;
 
 namespace AcFunVideo
 {
@@ -23,6 +26,7 @@ namespace AcFunVideo
     /// </summary>
     sealed partial class App : Application
     {
+        private PushNotificationChannel Channel;
         /// <summary>
         /// 初始化单一实例应用程序对象。这是执行的创作代码的第一行，
         /// 已执行，逻辑上等同于 main() 或 WinMain()。
@@ -87,6 +91,7 @@ namespace AcFunVideo
             }
             // 确保当前窗口处于活动状态
             Window.Current.Activate();
+            InitPushService();
         }
 
         private Frame CreateRootFrame()
@@ -124,6 +129,55 @@ namespace AcFunVideo
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: 保存应用程序状态并停止任何后台活动
             deferral.Complete();
+        }
+
+        private async void InitPushService()
+        {
+            try
+            {
+                if (Channel != null)
+                {
+                    Channel.PushNotificationReceived -= OnPushNotificationReceived;
+                    Channel = null;
+                }
+                Channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
+                Channel.PushNotificationReceived += OnPushNotificationReceived;
+                var timeout = Config.GetValue(ConfigSetting.PushServiceExpiration, 0L, false).TimeStampToDate(); 
+                if (timeout <= DateTime.Now)
+                {
+                    PushService.InitBmob("e9c75afb85827f7eda486d8eaa5eb304", "c88dc50c5af870db43d4de302cce50d5"); 
+                    PushService.InitPushService(Channel, "Push", () =>
+                    {
+                        Config.SetValue(ConfigSetting.PushServiceExpiration, Channel.ExpirationTime.LocalDateTime.GetTimeStampSeconds(), false);
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void OnPushNotificationReceived(PushNotificationChannel sender, PushNotificationReceivedEventArgs args)
+        {
+            switch (args.NotificationType)
+            {
+                case PushNotificationType.Badge: // badge 通知
+                    BadgeUpdateManager.CreateBadgeUpdaterForApplication().Update(args.BadgeNotification);
+                    break;
+                case PushNotificationType.Raw: // raw 通知
+                    // 当收到推送的 raw 通知时，如果 app 在锁屏，则可以触发后台任务以执行相关的逻辑（PushNotificationTrigger）
+                    string msg = args.RawNotification.Content;
+                    break;
+                case PushNotificationType.Tile: // tile 通知
+                    TileUpdateManager.CreateTileUpdaterForApplication().Update(args.TileNotification);
+                    break;
+                case PushNotificationType.Toast: // toast 通知
+                    ToastNotificationManager.CreateToastNotifier().Show(args.ToastNotification);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

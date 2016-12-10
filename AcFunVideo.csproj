@@ -26,7 +26,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\ARM\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS;WIN8_1</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>ARM</PlatformTarget>
@@ -36,7 +36,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
     <OutputPath>bin\ARM\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS;WIN8_1</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
     <DebugType>pdbonly</DebugType>
@@ -49,7 +49,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x64\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS;WIN8_1</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
@@ -59,7 +59,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS;WIN8_1</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
     <DebugType>pdbonly</DebugType>
@@ -72,7 +72,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS;WIN8_1</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
@@ -82,7 +82,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS;WIN8_1</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
     <DebugType>pdbonly</DebugType>
@@ -162,6 +162,7 @@
     <Compile Include="Model\NewBangumiData.cs" />
     <Compile Include="Model\PlayTimeData.cs" />
     <Compile Include="Model\PlayVideoSourceData.cs" />
+    <Compile Include="Model\SearchInfo.cs" />
     <Compile Include="Model\SinglePartDatas.cs" />
     <Compile Include="Model\VideoSourceData.cs" />
     <Compile Include="PCPage\PCMainPage.xaml.cs">
@@ -171,9 +172,94 @@
     <Compile Include="RankPage.xaml.cs">
       <DependentUpon>RankPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SearchPage.xaml.cs">
+      <DependentUpon>SearchPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SinglePartPage.xaml.cs">
       <DependentUpon>SinglePartPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utilites\AcConentTypeSelector.cs" />
+    <Compile Include="Utilites\Bmob\api\Bmob.cs" />
+    <Compile Include="Utilites\Bmob\api\Bmob.OO.cs" />
+    <Compile Include="Utilites\Bmob\api\Bmob.Task.cs" />
+    <Compile Include="Utilites\Bmob\api\BmobUnity.cs" />
+    <Compile Include="Utilites\Bmob\api\BmobWindows.cs" />
+    <Compile Include="Utilites\Bmob\api\BmobWindowsPhone.cs" />
+    <Compile Include="Utilites\Bmob\api\IBmobAPI.cs" />
+    <Compile Include="Utilites\Bmob\config\Configuration.cs" />
+    <Compile Include="Utilites\Bmob\example\GameObject.cs" />
+    <Compile Include="Utilites\Bmob\exception\BmobException.cs" />
+    <Compile Include="Utilites\Bmob\Extensions\BmobObjectExtension.cs" />
+    <Compile Include="Utilites\Bmob\Extensions\MiscExtensions.cs" />
+    <Compile Include="Utilites\Bmob\http\BmobCommand.cs" />
+    <Compile Include="Utilites\Bmob\http\BmobInteractionObject.cs" />
+    <Compile Include="Utilites\Bmob\http\Http.cs" />
+    <Compile Include="Utilites\Bmob\io\basic\BmobBoolean.cs" />
+    <Compile Include="Utilites\Bmob\io\basic\BmobDouble.cs" />
+    <Compile Include="Utilites\Bmob\io\basic\BmobInt.cs" />
+    <Compile Include="Utilites\Bmob\io\basic\BmobLong.cs" />
+    <Compile Include="Utilites\Bmob\io\basic\BmobNumber.cs" />
+    <Compile Include="Utilites\Bmob\io\BmobACL.cs" />
+    <Compile Include="Utilites\Bmob\io\BmobDate.cs" />
+    <Compile Include="Utilites\Bmob\io\BmobFile.cs" />
+    <Compile Include="Utilites\Bmob\io\BmobGeoPoint.cs" />
+    <Compile Include="Utilites\Bmob\io\BmobInput.cs" />
+    <Compile Include="Utilites\Bmob\io\BmobInstallation.cs" />
+    <Compile Include="Utilites\Bmob\io\BmobKV.cs" />
+    <Compile Include="Utilites\Bmob\io\BmobObject.cs" />
+    <Compile Include="Utilites\Bmob\io\BmobOutput.cs" />
+    <Compile Include="Utilites\Bmob\io\BmobPointer.cs" />
+    <Compile Include="Utilites\Bmob\io\BmobQuery.cs" />
+    <Compile Include="Utilites\Bmob\io\BmobRelation.cs" />
+    <Compile Include="Utilites\Bmob\io\BmobRole.cs" />
+    <Compile Include="Utilites\Bmob\io\BmobTable.cs" />
+    <Compile Include="Utilites\Bmob\io\BmobTable2.cs" />
+    <Compile Include="Utilites\Bmob\io\BmobUser.cs" />
+    <Compile Include="Utilites\Bmob\io\IBmobOperator.cs" />
+    <Compile Include="Utilites\Bmob\io\IBmobValue.cs" />
+    <Compile Include="Utilites\Bmob\io\IBmobWritable.cs" />
+    <Compile Include="Utilites\Bmob\io\operator\Add.cs" />
+    <Compile Include="Utilites\Bmob\io\operator\AddRelation.cs" />
+    <Compile Include="Utilites\Bmob\io\operator\AddUnique.cs" />
+    <Compile Include="Utilites\Bmob\io\operator\Delete.cs" />
+    <Compile Include="Utilites\Bmob\io\operator\Increment.cs" />
+    <Compile Include="Utilites\Bmob\io\operator\Operate.cs" />
+    <Compile Include="Utilites\Bmob\io\operator\Remove.cs" />
+    <Compile Include="Utilites\Bmob\io\operator\RemoveRelation.cs" />
+    <Compile Include="Utilites\Bmob\io\paramater\BmobBatch.cs" />
+    <Compile Include="Utilites\Bmob\io\paramater\BmobLocalFile.cs" />
+    <Compile Include="Utilites\Bmob\io\paramater\BmobRemote.cs" />
+    <Compile Include="Utilites\Bmob\io\paramater\PushParamter.cs" />
+    <Compile Include="Utilites\Bmob\io\paramater\SMSParamter.cs" />
+    <Compile Include="Utilites\Bmob\io\paramater\ThumbnailParameter.cs" />
+    <Compile Include="Utilites\Bmob\json\JsonAdapter.cs" />
+    <Compile Include="Utilites\Bmob\json\SimpleJson.cs" />
+    <Compile Include="Utilites\Bmob\json\SimpleJsonParser.cs" />
+    <Compile Include="Utilites\Bmob\response\BmobResponseParser.cs" />
+    <Compile Include="Utilites\Bmob\response\Create.cs" />
+    <Compile Include="Utilites\Bmob\response\Delete.cs" />
+    <Compile Include="Utilites\Bmob\response\Empty.cs" />
+    <Compile Include="Utilites\Bmob\response\EndPoint.cs" />
+    <Compile Include="Utilites\Bmob\response\Query.cs" />
+    <Compile Include="Utilites\Bmob\response\SMS.cs" />
+    <Compile Include="Utilites\Bmob\response\Status.cs" />
+    <Compile Include="Utilites\Bmob\response\TimeStamp.cs" />
+    <Compile Include="Utilites\Bmob\response\Update.cs" />
+    <Compile Include="Utilites\Bmob\response\Upload.cs" />
+    <Compile Include="Utilites\Bmob\tools\BmobArrays.cs" />
+    <Compile Include="Utilites\Bmob\tools\BmobDebug.cs" />
+    <Compile Include="Utilites\Bmob\tools\Utilities.cs" />
+    <Compile Include="Utilites\Config.cs" />
+    <Compile Include="Utilites\IncrementalLoadingCollection.cs" />
+    <Compile Include="Utilites\KeyedList.cs" />
+    <Compile Include="Utilites\PushService.cs" />
+    <Compile Include="Utilites\SearchControl.xaml.cs">
+      <DependentUpon>SearchControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utilites\Selector.cs" />
+    <Compile Include="Utilites\TimeUtil.cs" />
+    <Compile Include="Utilites\WrapPanel.cs" />
+    <Compile Include="Utilites\ZeroCoverter.cs" />
     <Compile Include="View\BannerView.xaml.cs">
       <DependentUpon>BannerView.xaml</DependentUpon>
     </Compile>
@@ -385,9 +471,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SearchPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SinglePartPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Utilites\SearchControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\BannerView.xaml">
       <SubType>Designer</SubType>

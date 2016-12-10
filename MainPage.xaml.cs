@@ -696,6 +696,7 @@ namespace AcFunVideo
         {
             base.OnNavigatedTo(e);
             SystemNavigationManager systemNavigationManager = SystemNavigationManager.GetForCurrentView();
+            systemNavigationManager.BackRequested -= SystemNavigationManager_BackRequested;
             systemNavigationManager.BackRequested += SystemNavigationManager_BackRequested;
             systemNavigationManager.AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
         }
@@ -724,7 +725,7 @@ namespace AcFunVideo
 
         private void MainSearchButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(AboutPage));
+            this.Frame.Navigate(typeof(SearchPage));
         }
 
         private void Grid_Tapped(object sender, TappedRoutedEventArgs e)

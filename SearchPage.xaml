@@ -1,0 +1,150 @@
+﻿<Page
+    x:Class="AcFunVideo.SearchPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AcFunVideo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="using:AcFunVideo.Model"
+    xmlns:ut="using:AcFunVideo.Utilites"
+    mc:Ignorable="d">
+    <Page.Resources> 
+        <ut:ZeroCoverter x:Key="ZeroCoverter"/>
+        <DataTemplate x:Key="VideoDataTemplate">
+            <Border BorderThickness="0,1,0,0" BorderBrush="Gainsboro" Margin="5">
+                <Grid Margin="0,5,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Width="150" Source="{Binding Cover}"/>
+                    <StackPanel Margin="5,0,0,0" Grid.Column="1" VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Title}" FontSize="16" TextWrapping="WrapWholeWords" MaxLines="2"/>
+                        <TextBlock Margin="0,10,0,0">
+                            <Run>UP主：</Run>
+                            <Run Text="{Binding UserName}"/>
+                        </TextBlock>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="BangumiDataTemplate">
+            <Border BorderThickness="0,1,0,0" BorderBrush="Gainsboro" Margin="5">
+                <Grid Margin="0,5,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Width="100" Source="{Binding Cover}"/>
+                    <StackPanel Margin="5,0,0,0" Grid.Column="1" VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Title}" FontSize="16" TextWrapping="WrapWholeWords" MaxLines="1"/> 
+ 
+                        <TextBlock Text="{Binding Description}" TextWrapping="WrapWholeWords" MaxLines="2"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="ArticleDataTemplate">
+            <Border BorderThickness="0,0,0,1" BorderBrush="#999">
+                <Grid Margin="5,5,10,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Background="#3bb3d0" Width="70" Height="70" Margin="5">
+                        <StackPanel  VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5">
+                            <TextBlock HorizontalAlignment="Right" Text="{Binding Comments}" Foreground="White" FontSize="20" Margin="0,0,2,0"/>
+                            <TextBlock HorizontalAlignment="Right" Text="评论" FontSize="14" Foreground="White" Margin="5,2"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Column="1" Margin="0,0,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{Binding Title}" Foreground="#606060" FontSize="16" VerticalAlignment="Top" TextWrapping="Wrap"/>
+                        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock Foreground="#3bb3d0" Text="{Binding UserName}"/>
+                            <TextBlock Text="/" Margin="5,0" Foreground="#888"/>
+                            <TextBlock Text="{Binding Date}" Foreground="#888"/>
+                            <TextBlock Text="/" Margin="5,0" Foreground="#888"/>
+                            <TextBlock Text="{Binding Views}" Foreground="#888"/>
+                            <TextBlock Text="人围观" Foreground="#888"/>
+                        </StackPanel>
+                        <TextBlock Grid.Row="2" MaxLines="2" VerticalAlignment="Center"  Foreground="#999" Text="{Binding Description}" TextTrimming="CharacterEllipsis"/>
+                    </Grid>
+                </Grid>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="SpecialDataTemplate">
+            <Border BorderThickness="0,1,0,0" BorderBrush="Gainsboro" Margin="5">
+                <Grid Margin="0,5,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Width="100" Source="{Binding Cover}"/>
+                    <StackPanel Margin="5,0,0,0" Grid.Column="1" VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Title}" FontSize="16" TextWrapping="WrapWholeWords" MaxLines="1"/>
+                        <TextBlock Margin="0,10,0,10">
+                            <Run>UP主：</Run>
+                            <Run Text="{Binding UserName}"/>
+                        </TextBlock>
+                        <TextBlock Text="{Binding Description}" TextWrapping="WrapWholeWords" MaxLines="2"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="UserDataTemplate">
+            <Border BorderThickness="0,1,0,0" BorderBrush="Gainsboro" Margin="5">
+                <Image></Image>
+            </Border>
+        </DataTemplate>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <AutoSuggestBox Grid.Row="0" TextChanged="SuggestBox_OnTextChanged" SuggestionChosen="SuggestBox_OnSuggestionChosen" QuerySubmitted="SuggestBox_OnQuerySubmitted" QueryIcon="Find" KeyDown="SuggestBox_OnKeyDown" TextMemberPath="Name" x:Name="SuggestBox">
+            <AutoSuggestBox.ItemTemplate>
+                <DataTemplate x:DataType="model:Suggest" >
+                    <Grid HorizontalAlignment="Stretch">
+                        <TextBlock Text="{Binding Name}"/>
+                        <TextBlock Text="{Binding Count}" HorizontalAlignment="Right" Visibility="{Binding Count,Converter={StaticResource ZeroCoverter}}"/>
+                    </Grid>
+                </DataTemplate>
+            </AutoSuggestBox.ItemTemplate>
+            <AutoSuggestBox.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </AutoSuggestBox.ItemContainerStyle>
+        </AutoSuggestBox>
+        <Button Margin="5,0" Grid.Row="0" Grid.Column="1" Padding="0" Click="SearchTypeEx_OnClick" Style="{x:Null}" Background="Transparent" BorderThickness="0" >
+            <Button.Content>
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE015;"></FontIcon>
+            </Button.Content>
+        </Button>
+        <Popup Grid.Row="1" HorizontalAlignment="Stretch" Grid.Column="0" Grid.ColumnSpan="2" IsOpen="True">
+             
+        </Popup>
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <ListView IsItemClickEnabled="True" ItemClick="ListViewBase_OnItemClick" ItemsSource="{Binding Contents}" DataFetchSize="5" IncrementalLoadingThreshold="2" IncrementalLoadingTrigger="Edge">
+                <ListView.ItemTemplateSelector>
+                    <ut:AcConentTypeSelector VideoTemplate="{StaticResource VideoDataTemplate}" ArticleTemplate="{StaticResource ArticleDataTemplate}" BangumiTemplate="{StaticResource BangumiDataTemplate}" SpecialTemplate="{StaticResource SpecialDataTemplate}" UserTemplate="{StaticResource UserDataTemplate}"/>
+                </ListView.ItemTemplateSelector>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+        </Grid> 
+    </Grid>
+</Page>

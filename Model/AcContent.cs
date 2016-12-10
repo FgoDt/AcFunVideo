@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Windows.UI;
 using Windows.UI.Xaml.Media;
+using Newtonsoft.Json;
 
 namespace AcFunVideo.Model
 {
@@ -88,16 +90,64 @@ namespace AcFunVideo.Model
 
     public class AcContent
     {
+        /// <summary>
+        /// 色 无码
+        /// </summary>
+        public AcContentType AcContentType { get; set; }
+        public string Avatar { get; set; }
+       
         public string Type { get; set; }
         public string CoverHorizonTal { get; set; }
         public string ChannelId { get; set; }
+
+        private string _intro;
+        public string Intro
+        {
+            get
+            {
+                return _intro;
+            }
+            set
+            {
+                _intro = value;
+                Description = value;
+            }
+        }
         public string Display { get; set; }
         public string Description { get; set; }
-        public string ContentId { get; set; }
+        private string _contentId;
+
+        public string ContentId
+        {
+            get
+            {
+                return _contentId;
+            }
+            set
+            {
+                int result;
+                if (value != null&&int.TryParse(Regex.Match(value,@"\d+").Value,out result))
+                {
+                    _contentId = result.ToString();
+                }
+            }
+        }
+
         public string ReleaseDate { get; set; }
         public string IsArticle { get; set; }
         public string IsRecommend { get; set; }
         public string Title { get; set; }
+        private string _titleImg;
+
+        public string TitleImg
+        {
+            get { return _titleImg; }
+            set
+            {
+                _titleImg = value;
+                Cover = value;
+            }
+        }
         public string Status { get; set; }
         public string UpdatedAt { get; set; }
         public string Cover { get; set; }
@@ -105,12 +155,32 @@ namespace AcFunVideo.Model
         public string Toplevel { get; set; }
         public string TudouDomain { get; set; }
         public string ACURL{get;set ;}
+        //[JsonIgnore] 
         public List<string> Tags { get; set; }
-        public string id { get; set; }
+        private string _id;
+
+        public string id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                _id = value;
+                _contentId = value;
+            }
+        }
+        public string UserName { get; set; }
         public ACUser User { get; set; }
         public ACVisit Visit { get; set; }
         public Bangumi Bangumi { get; set; }
         public List<VideoDetail> DetailVideos { get; set; }
+
+        public int Stows { get; set; }
+        public int Views { get; set; }
+        public int Comments { get; set; }
+
     }
 
     public class ChannelContent : AcContent
@@ -209,6 +279,32 @@ namespace AcFunVideo.Model
         }
     }
 
+    public enum AcContentType
+    {
+        /// <summary>
+        /// 视频
+        /// </summary>
+        Videos,
+
+        /// <summary>
+        /// 番剧
+        /// </summary>
+        Bangumis,
+
+        /// <summary>
+        /// 文章
+        /// </summary>
+        Articles,
+
+        /// <summary>
+        /// 合集
+        /// </summary>
+        Special,
+        /// <summary>
+        /// UP主
+        /// </summary>
+        User,
+    }
 
     public class ACCollection : System.Collections.ObjectModel.ObservableCollection<object>
     {

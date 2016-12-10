@@ -11,7 +11,7 @@
     <RemoteDebugMachine>DESKTOP-0HEDOQL</RemoteDebugMachine>
     <AuthenticationMode>None</AuthenticationMode>
     <RemoteDebugEnabled>false</RemoteDebugEnabled>
-    <CreateCleanLayout>true</CreateCleanLayout>
+    <CreateCleanLayout>false</CreateCleanLayout>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
     <DeviceId>30F105C9-681E-420b-A277-7C086EAD8A4E</DeviceId>
@@ -23,6 +23,7 @@
     <AppxBuildConfigurationSelection>arm</AppxBuildConfigurationSelection>
     <RemoteMachine0>192.168.1，107</RemoteMachine0>
     <UseAuthentication0>True</UseAuthentication0>
+    <ProjectView>ProjectFiles</ProjectView>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <RemoteDebugMachine>192.168.1.107</RemoteDebugMachine>
