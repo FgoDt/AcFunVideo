@@ -23,10 +23,11 @@
 
     <Grid SizeChanged="Grid_SizeChanged" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid>
-            <ScrollViewer x:Name="rootScrollViewer" ScrollViewer.VerticalScrollBarVisibility="Visible" >
-
-                <StackPanel>
-                    <Grid  x:Name="PlayerGrid" Height="200" Background="Black">
+        <!-- 播放器 Grid -->
+            <Grid  x:Name="PlayerGrid"
+                   Loaded="PlayerGrid_Loaded"
+                   VerticalAlignment="Top"
+                   Height="200" Background="Black">
                         <MediaElement Stretch="UniformToFill"
                                       x:Name="Player" 
                                       />
@@ -63,6 +64,11 @@
                         </Grid>
                         <Grid Margin="0,30,0,50" Background="Transparent" Tapped="PlayerGrid_Tapped"></Grid>
                     </Grid>
+           
+            
+            <!-- 视频详情 -->
+            <ScrollViewer Margin="0,210,0,0" x:Name="rootScrollViewer" ScrollViewer.VerticalScrollBarVisibility="Visible" >
+                <StackPanel>
                     <TextBlock Margin="10,10,0,0" x:Name="TitleBlock"  
                                TextWrapping="Wrap"  >
 
@@ -101,7 +107,7 @@
     </Grid>
 
     <Page.BottomAppBar>
-        <CommandBar >
+        <CommandBar x:Name="MYAppBar" >
             <AppBarButton x:Name="GoDownload" Label="查看下载" Click="GoDownload_Click">
                 <AppBarButton.Icon>
                     <FontIcon Glyph="&#xe74e;" />

@@ -24,6 +24,7 @@ using Microsoft.Graphics.Canvas;
 using System.Numerics;
 using Windows.System.Display;
 using Windows.Storage.Pickers;
+using Windows.UI.ViewManagement;
 // “空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=234238 上提供
 
 namespace AcFunVideo
@@ -50,6 +51,17 @@ namespace AcFunVideo
             _pageTimer.Interval = new TimeSpan(0, 0, 0, 0, 75);
             _pageTimer.Tick += _pageTimer_Tick;
             _pageTimer.Start();
+            Window.Current.SizeChanged += Current_SizeChanged;
+        }
+
+        private void Current_SizeChanged(object sender, WindowSizeChangedEventArgs e)
+        {
+            ResizeLayout();
+        }
+
+        private void ResizeLayout()
+        {
+            rootScrollViewer.Margin = new Thickness(0, PlayerGrid.ActualHeight + 10, 0, 0);
         }
 
         private void _pageTimer_Tick(object sender, object e)
@@ -74,6 +86,12 @@ namespace AcFunVideo
                 isLocalFile = true;
                 PlayLocalVideo();
             }
+
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
+            {
+                StatusBar statusBar = StatusBar.GetForCurrentView();
+                statusBar.HideAsync();
+            }
             //InitFunc();
         }
 
@@ -85,6 +103,12 @@ namespace AcFunVideo
             this.Player.Source = null;
             Player.Stop();
             Windows.Graphics.Display.DisplayInformation.AutoRotationPreferences = Windows.Graphics.Display.DisplayOrientations.Portrait;
+
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
+            {
+                StatusBar statusBar = StatusBar.GetForCurrentView();
+                statusBar.ShowAsync();
+            }
         }
 
         #endregion
@@ -326,12 +350,21 @@ namespace AcFunVideo
         {
             PlayerGrid.Height = Player.Height = PlayerGrid.ActualWidth * 9 / 16;
             TimeControlGrid.Width = TimeControler.Width = PlayerGrid.ActualWidth - 120;
+            if (PlayerGrid.Height+80>Window.Current.Bounds.Height)
+            {
+                MYAppBar.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                MYAppBar.Visibility = Visibility.Visible;
+            }
 
         }
 
         private void Grid_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             ChangeSize();
+            ResizeLayout();
         }
 
         bool isXmalSelect = true;
@@ -389,6 +422,7 @@ namespace AcFunVideo
                 dispRequest.RequestActive();
 
             }
+            ResizeLayout();
             //throw new NotImplementedException();
         }
 
@@ -452,6 +486,9 @@ namespace AcFunVideo
         bool isFullScreen = false;
         private void ChangeFullScreen()
         {
+            DoFullScreenSwitch();
+            return;
+            //遗弃的方法
             if (isFullScreen)
             {
                 isFullScreen = false;
@@ -472,6 +509,32 @@ namespace AcFunVideo
                 rootScrollViewer.HorizontalScrollMode = ScrollMode.Disabled;
                 StatusBarTools();
             }
+        }
+
+        private async void DoFullScreenSwitch()
+        {
+            var view = ApplicationView.GetForCurrentView();
+            if (isFullScreen)
+            {
+                isFullScreen = false;
+                Windows.Graphics.Display.DisplayInformation.AutoRotationPreferences = Windows.Graphics.Display.DisplayOrientations.Portrait;
+            }
+            else
+            {
+                isFullScreen = true;
+                Windows.Graphics.Display.DisplayInformation.AutoRotationPreferences = Windows.Graphics.Display.DisplayOrientations.Landscape;
+            }
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                if (!view.IsFullScreenMode)
+                {
+                    Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().TryEnterFullScreenMode();
+                }
+                else
+                {
+                    Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().ExitFullScreenMode();
+                }
+            });
         }
 
 
@@ -518,7 +581,7 @@ namespace AcFunVideo
 
         private void TimeControler_PointerExited(object sender, PointerRoutedEventArgs e)
         {
-
+            ResizeLayout();
         }
 
 
@@ -828,6 +891,11 @@ namespace AcFunVideo
             this.Player.Stop();
             this.Player.Source = null;
             this.Frame.Navigate(typeof(DownloadPage));
+        }
+
+        private void PlayerGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 

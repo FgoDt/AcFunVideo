@@ -21,7 +21,7 @@
                 <Image VerticalAlignment="Top" Width="100" Margin="0,0,0,0" Source="IMGS/logo@1,5x.png">
                 </Image>
                 <RichTextBlock VerticalAlignment="Top"
-                       Margin="80,30,80,0">
+                       Margin="70,30,70,0">
                     <Paragraph>
                         <Run Foreground="Black">
                             <Run.Text>软件版本：</Run.Text>
@@ -31,11 +31,11 @@
                         <LineBreak/>
                         <Run Foreground="Black">CAST</Run>
                         <LineBreak/>
-                        <Run Foreground="#0078d7">程序开发：FgoDt</Run>
-                        <LineBreak/>
-                        <Run Foreground="#0078d7">绯色の空（技术支持）</Run>
+                        <Run Foreground="#0078d7">程序开发：绯色の空 FgoDt</Run>
                         <LineBreak/>
                         <Run Foreground="#0078d7">界面设计：Say</Run>
+                        <LineBreak/>
+                        <Run Foreground="#0078d7">开 源 库 ：SYEngine</Run>
                         <LineBreak/>
                         <LineBreak/>
                         <Run Foreground="Black" >感谢</Run>
@@ -45,7 +45,7 @@
                         <LineBreak/>
                         <Run Foreground="Black">如你所见这是一个未完成的软件，如果不是8.1版本失效你不应该看到这个版本！所以其中的bug很多见谅！！！</Run>
                         <InlineUIContainer>
-                            <HyperlinkButton Content="CODE:git@gitlab.com:fgodt/AcFunVideo.git"/>
+                            <HyperlinkButton Content="github.com/FgoDt/AcFunVideo/"/>
                         </InlineUIContainer>
                     </Paragraph>
                 </RichTextBlock>
